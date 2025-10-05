@@ -1,0 +1,179 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 236 67% 6%;
+    --foreground: 214 100% 97%;
+
+    --card: 232 59% 12%;
+    --card-foreground: 214 100% 97%;
+
+    --popover: 234 65% 8%;
+    --popover-foreground: 214 100% 97%;
+
+    --primary: 280 89% 68%;
+    --primary-foreground: 214 100% 97%;
+
+    --secondary: 195 92% 54%;
+    --secondary-foreground: 214 100% 97%;
+
+    --muted: 233 34% 24%;
+    --muted-foreground: 217 24% 75%;
+
+    --accent: 166 72% 46%;
+    --accent-foreground: 214 100% 97%;
+
+    --destructive: 8 87% 58%;
+    --destructive-foreground: 214 100% 97%;
+
+    --border: 232 51% 18%;
+    --input: 232 51% 18%;
+    --ring: 280 89% 68%;
+
+    --radius: 1.25rem;
+
+    --sidebar-background: 236 67% 6%;
+    --sidebar-foreground: 214 100% 96%;
+    --sidebar-primary: 280 89% 68%;
+    --sidebar-primary-foreground: 214 100% 97%;
+    --sidebar-accent: 233 34% 24%;
+    --sidebar-accent-foreground: 214 100% 97%;
+    --sidebar-border: 232 51% 18%;
+    --sidebar-ring: 195 92% 54%;
+  }
+
+  .dark {
+    --background: 234 69% 4%;
+    --foreground: 214 100% 96%;
+
+    --card: 232 63% 10%;
+    --card-foreground: 214 100% 96%;
+
+    --popover: 234 69% 4%;
+    --popover-foreground: 214 100% 96%;
+
+    --primary: 280 89% 68%;
+    --primary-foreground: 234 69% 4%;
+
+    --secondary: 195 92% 54%;
+    --secondary-foreground: 234 69% 4%;
+
+    --muted: 232 34% 18%;
+    --muted-foreground: 216 16% 72%;
+
+    --accent: 166 72% 46%;
+    --accent-foreground: 234 69% 4%;
+
+    --destructive: 8 84% 48%;
+    --destructive-foreground: 214 100% 96%;
+
+    --border: 232 51% 18%;
+    --input: 232 51% 18%;
+    --ring: 280 89% 68%;
+    --sidebar-background: 234 69% 4%;
+    --sidebar-foreground: 214 100% 96%;
+    --sidebar-primary: 280 89% 68%;
+    --sidebar-primary-foreground: 234 69% 4%;
+    --sidebar-accent: 232 34% 18%;
+    --sidebar-accent-foreground: 214 100% 96%;
+    --sidebar-border: 232 51% 18%;
+    --sidebar-ring: 195 92% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-image:
+      radial-gradient(40% 60% at 10% 10%, hsla(195, 92%, 54%, 0.32), transparent 60%),
+      radial-gradient(45% 55% at 80% 20%, hsla(280, 89%, 68%, 0.35), transparent 65%),
+      radial-gradient(60% 70% at 50% 90%, hsla(166, 72%, 46%, 0.25), transparent 70%),
+      linear-gradient(135deg, hsl(236 67% 6%) 0%, hsl(235 62% 8%) 40%, hsl(229 64% 12%) 100%);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Unbounded", "Space Grotesk", system-ui, sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .bg-orb {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-orb::before {
+    content: "";
+    position: absolute;
+    inset: -40% auto auto -30%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, hsla(195, 92%, 54%, 0.45) 0%, transparent 60%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .bg-orb::after {
+    content: "";
+    position: absolute;
+    inset: auto -35% -35% auto;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, hsla(280, 89%, 68%, 0.45) 0%, transparent 65%);
+    filter: blur(25px);
+    pointer-events: none;
+  }
+
+  .grid-overlay {
+    background-image: linear-gradient(
+        90deg,
+        hsla(214, 100%, 97%, 0.06) 1px,
+        transparent 0
+      ),
+      linear-gradient(0deg, hsla(214, 100%, 97%, 0.06) 1px, transparent 0);
+    background-size: 64px 64px;
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_20px_60px_-25px_rgba(12,15,45,0.9)] rounded-3xl;
+  }
+
+  .coin-card {
+    @apply glass-panel transition-all duration-500 ease-out;
+    background-image: radial-gradient(circle at top right, hsla(280, 89%, 68%, 0.22), transparent 55%),
+      radial-gradient(circle at bottom left, hsla(195, 92%, 54%, 0.22), transparent 60%);
+  }
+
+  .coin-card:hover {
+    @apply -translate-y-2 shadow-[0_28px_80px_-45px_rgba(58,196,255,0.8)];
+  }
+
+  .section-heading {
+    @apply text-4xl md:text-5xl font-semibold tracking-tight text-white drop-shadow-[0_12px_45px_rgba(160,120,255,0.35)];
+  }
+
+  .section-subtitle {
+    @apply text-base md:text-lg text-muted-foreground max-w-2xl;
+  }
+}
