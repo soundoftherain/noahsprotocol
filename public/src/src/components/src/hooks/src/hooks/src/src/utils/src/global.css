@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌌 Noah’s Ark Global Theme */
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #f2f2f2;
+  --primary: #00f5d4;
+  --secondary: #5f0a87;
+  --accent: #ff007f;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --radius: 1rem;
+}
+
+html,
+body {
+  @apply bg-[var(--background)] text-[var(--foreground)] font-sans antialiased;
+  scroll-behavior: smooth;
+}
+
+/* 🌠 Typography */
+h1,
+h2,
+h3,
+h4 {
+  @apply font-bold tracking-tight;
+}
+
+h1 {
+  @apply text-4xl md:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
+}
+
+/* ✨ Buttons */
+button,
+.btn {
+  @apply px-5 py-2 rounded-2xl font-medium border border-[var(--border-color)] transition-all duration-200;
+  background: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    var(--accent) 100%
+  );
+  color: var(--background);
+}
+
+button:hover,
+.btn:hover {
+  filter: brightness(1.2);
+  transform: scale(1.03);
+}
+
+/* 🪞 Cards */
+.card {
+  @apply p-6 rounded-[var(--radius)] border border-[var(--border-color)] backdrop-blur-md transition-all duration-300;
+  background: var(--card-bg);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+/* 🎧 NFT Episode Labels */
+.episode-tag {
+  @apply text-xs uppercase tracking-widest font-semibold text-[var(--accent)];
+}
+
+/* 🌈 Gradient Text Utility */
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 🌊 Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ⚡ NFT Purchase Button (Special) */
+.nft-button {
+  @apply px-6 py-3 rounded-full font-semibold border border-[var(--primary)] text-[var(--primary)] transition-all duration-300;
+  background: transparent;
+}
+
+.nft-button:hover {
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--accent)
+  );
+  color: var(--background);
+  transform: scale(1.05);
+}
+
+/* 🌍 Layout */
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Scrollbar Styling (Optional aesthetic touch) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--accent));
+  border-radius: 10px;
+}
