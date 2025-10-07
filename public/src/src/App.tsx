@@ -13,3 +13,12 @@ function App() {
 }
 
 export default App;
+import NotFound from "./pages/NotFound";
+
+// inside your Routes component:
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/universe" element={<Universe />} />
+  <Route path="/meet-the-founder" element={<MeetTheFounder />} />
+  <Route path="*" element={<NotFound />} /> {/* ← catch-all route */}
+</Routes>
